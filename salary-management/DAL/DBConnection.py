@@ -3,10 +3,10 @@ import mysql.connector
 
 #utworzenie obiektu łączącego się do bazy wedle ustawien
 my_db = mysql.connector.connect(
-                host="78.157.187.16",
+                host="192.168.1.10",
                 user="user",
                 password="123123123",
                 database="salarymanagement",
-                port = "3307"
+                port = "3306"
             )
 

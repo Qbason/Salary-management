@@ -565,14 +565,27 @@ class ViewTabs():
         self.l_type = Label(self.my_frame5,text="Typ umowy")
         self.l_type.grid(row=1,column=3,columnspan=2,rowspan=1,sticky="nsew",padx=5,pady=5)
         
+        self.e_type = Entry(self.my_frame5,width=7)
+        self.e_type.grid(row=1,column=5,columnspan=1,rowspan=1,sticky="nsew",padx=5,pady=5)
+        
         self.l_startingdate = Label(self.my_frame5,text="Czas rozpoczęcia umowy")
         self.l_startingdate.grid(row=2,column=3,columnspan=2,sticky="nsew",padx=5,pady=5)
+        
+        self.e_startingdate = Entry(self.my_frame5,width=7)
+        self.e_startingdate.grid(row=2,column=5,columnspan=1,rowspan=1,sticky="nsew",padx=5,pady=5)
         
         self.l_expirationdate = Label(self.my_frame5,text="Czas zakończenia umowy")
         self.l_expirationdate.grid(row=3,column=3,columnspan=2,sticky="nsew",padx=5,pady=5)
         
+        self.e_expirationdate = Entry(self.my_frame5,width=7)
+        self.e_expirationdate.grid(row=3,column=5,columnspan=1,rowspan=1,sticky="nsew",padx=5,pady=5)
+        
+        
         self.l_hourlyrate = Label(self.my_frame5,text="Stawka na godzine")
         self.l_hourlyrate.grid(row=4,column=3,columnspan=2,sticky="nsew",padx=5,pady=5)
+        
+        self.e_hourlyrate = Entry(self.my_frame5,width=7)
+        self.e_hourlyrate.grid(row=4,column=5,columnspan=2,sticky="nsew",padx=5,pady=5)
         
         self.l_dayjob = Label(self.my_frame5,text="Etat:")
         self.l_dayjob.grid(row=5,column=3,columnspan=2,sticky="nsew",padx=5,pady=5)
@@ -623,6 +636,9 @@ class ViewTabs():
         self.l_date["text"] = self.calendar.get_date()
         #set chose_day based on chose day from calendar widget
         chose_day = self.calendar.get_date()
+        #print("-------View-----")
+        #print(chose_day)
+        #print("-------View------")
         #print(chose_day)
         #delete value from e_hours
         self.e_hours.delete(0,END)
@@ -837,6 +853,10 @@ class ViewTabs():
     #frame 5
     #region
     def export_to_file(self):
-        print("siema")
+        starting_month = self.e_date_start.get()
+        ending_month = self.e_date_end.get()
+    
+        r = self.viewtabsmodel.export_hours_to_file(self.actualuser,starting_month,ending_month)
+        
     
     #endregion

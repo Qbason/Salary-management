@@ -1,3 +1,4 @@
+import copy
 from DAL.Entity.Schedule import Schedule
 from DAL.Entity.User import User
 from DAL.Entity.Employee import Employee
@@ -170,6 +171,7 @@ class ViewTabsModel():
                 year_month,
                 full_date=False
             )
+            
             sum_hours_should_work = self.get_hours_of_working(user,year_month,full_date=False)
             overtime_sum = overtime_sum + (sum_hours-sum_hours_should_work)
         
@@ -276,6 +278,9 @@ class ViewTabsModel():
 
     #calucalting how many hours we have to work in specific month
     def get_hours_of_working(self,user,chose_day,full_date=True):
+       # print("1-----ViewModel----1")
+        #print(chose_day)
+        #print("1----ViewModel----1")
         "user(object), chose_day from schedule"
         #zrobic porownanie dat, tak, że tylko jeżeli 
         #data jest nowsza od daty rozpoczecia umowy to wtedy liczmy ile ma robic
@@ -312,7 +317,6 @@ class ViewTabsModel():
             "2021-01-01",
             "2021-01-06",
             "2021-04-05",
-            "2021-04-05",
             "2021-05-01",
             "2021-05-03",
             "2021-06-03",
@@ -323,14 +327,18 @@ class ViewTabsModel():
             "2021-12-26"
 
         ]
+        #print(chose_day)
+        #print(year,month)
         #changing holidays year depending on user decision
         if year!=2021:
             for i in range(0,len(holidayss)):
-                holidayss[i].replace("2021",str(year),1)
+                holidayss[i] = holidayss[i].replace("2021",str(year),1)
+        #print(holidayss)
 
         #If the holidays is in the saturday, then we have one day more free 
+    
         count_days = 0
-        
+    
         for holiday in holidayss:
             holiday_date = datetime.strptime(holiday,"%Y-%m-%d")
             if holiday_date.month == month:
@@ -489,3 +497,58 @@ class ViewTabsModel():
             return True
         except:
             return False
+        
+        
+    def compare_two_dates_only_month_year(self,date_one,date_two):
+        if date_one.year == date_two.year and date_two.month == date_one.month:
+            return True
+        return False     
+    
+    def export_hours_to_file(self,user,start_date,end_date):
+        try:
+            full_date_start = datetime.strptime(start_date,"%Y.%m")
+            full_date_end = datetime.strptime(end_date,"%Y.%m")
+            
+            start_date_loop = full_date_start
+            
+            selected_months = []
+            over_all_sum = 0
+            while((full_date_end.year != start_date_loop.year) or (full_date_end.month!= start_date_loop.month)):
+                #print(start_date_loop)
+                overtime = 0
+                
+                #calculate the needed hours  of  working
+                n_h_w = self.get_hours_of_working(user,start_date_loop.strftime("%Y%m"),full_date=False)
+                
+                #calculate time of working
+                t_o_w = self.get_sum_of_hours(user,start_date_loop.strftime("%Y%m"),full_date=False)
+                
+                
+                
+                overtime = overtime + (t_o_w-n_h_w)
+                
+                selected_months.append(
+                    [start_date_loop.strftime("%Y-%m"),overtime]
+                )
+                over_all_sum = over_all_sum + overtime
+                
+                
+                start_date_loop = start_date_loop + relativedelta(months=1)
+                
+               
+                
+                
+            # print(
+            #     selected_months
+            # )
+            
+            with open("nadgodzin.txt","w") as f:
+                for month in selected_months:
+                    f.write(
+                        "Data: "+month[0]+"\nIlość nadgodzin: "+str(month[1])+"\n"
+                    )
+                f.write("Ogółem liczba nadgodzin:"+str(over_all_sum))
+            
+            
+        except Exception as e:
+            print("Error occur! ",e)

@@ -1,0 +1,13 @@
+Data: 2021-09
+Ilość nadgodzin: 8.75
+Data: 2021-10
+Ilość nadgodzin: 4.0
+Data: 2021-11
+Ilość nadgodzin: 4.0
+Data: 2021-12
+Ilość nadgodzin: 18.75
+Data: 2022-01
+Ilość nadgodzin: 6.25
+Data: 2022-02
+Ilość nadgodzin: 3.0
+Ogółem liczba nadgodzin:44.75
