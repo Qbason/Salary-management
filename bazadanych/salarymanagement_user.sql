@@ -37,7 +37,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'jacob','jacob@gmail.com','haslo'),(18,'jakukos','kuba1095@interia.pl','123123123'),(19,'jakukos392','hdkajshda@op.pl','123123123'),(20,'jakukos123','fsdfsad@op.pl','123123123'),(21,'jakukos1234','fsdfsad@op.pl','123123123'),(22,'jakukosc','fkjsdhfs@op.pl','123123123'),(23,'jakukos1233','daksjhda@op.pl','kdjaskdgkj'),(24,'jakukos12334','daksjhda@op.pl','kdjaskdgkj'),(25,'jaku','kjashdsa@op.pl','123123123');
+INSERT INTO `user` VALUES (1,'jacob','jacob@gmail.com','haslo'),(19,'jakukos392','hdkajshda@op.pl','123123123'),(20,'jakukos123','fsdfsad@op.pl','123123123'),(21,'jakukos1234','fsdfsad@op.pl','123123123'),(22,'jakukosc','fkjsdhfs@op.pl','123123123'),(23,'jakukos1233','daksjhda@op.pl','kdjaskdgkj'),(24,'jakukos12334','daksjhda@op.pl','kdjaskdgkj'),(25,'jaku','kjashdsa@op.pl','123123123');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
