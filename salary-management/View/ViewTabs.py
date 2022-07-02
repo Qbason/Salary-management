@@ -1,9 +1,7 @@
 from tkinter import *
 from tkinter import ttk
-from numpy import pad
 #from matplotlib.figure import Figure
 from tkcalendar import *
-
 from DAL.Entity.User import User
 
 
