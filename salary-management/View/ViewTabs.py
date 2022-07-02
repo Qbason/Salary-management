@@ -83,7 +83,7 @@ class ViewTabs():
 
 
         #Calendar - special object (it was install by  pip install tkcalendar)
-        self.calendar = Calendar(self.my_frame1,selectmod = "day", year=self.today_year(), month=self.today_month(), day=self.today_day(),local="en_US",date_pattern="dd.mm.yyyy")
+        self.calendar = Calendar(self.my_frame1,selectmod = "day", year=self.today_year(), month=self.today_month(), day=self.today_day(),locale="pl_PL",date_pattern="dd.mm.yyyy")
         self.calendar.grid(row=1,column=0,columnspan=1,rowspan=5,padx=5)
         self.calendar.bind("<<CalendarSelected>>",self.refresh_and_get_hours)
         
