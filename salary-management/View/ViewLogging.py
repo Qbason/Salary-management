@@ -56,11 +56,7 @@ class ViewLogging():
         
 
     def check_user(self):
-        self.e_username.insert(0,"jakukos392")
-        self.e_password.insert(0,"123123123")
-        
-       # self.e_username.insert(0,"maro")
-       # self.e_password.insert(0,"123123123")
+
         
         user = self.viewloggingmodel.check_if_is_in_database(self.e_username.get(),self.e_password.get())
         if  user!= None:
