@@ -5,7 +5,7 @@ import mysql.connector
 my_db = mysql.connector.connect(
                 host="192.168.1.10",
                 user="user",
-                password="123123123",
+                password="zaq1@WSX",
                 database="salarymanagement",
                 port = "3306"
             )

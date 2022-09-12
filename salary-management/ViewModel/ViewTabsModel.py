@@ -13,8 +13,8 @@ import numpy as np
 from dateutil.relativedelta import relativedelta
 
 #testing
-import matplotlib.pyplot as plt
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+#import matplotlib.pyplot as plt
+#from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 
 
